@@ -1,4 +1,4 @@
-package Production;
+package gui.Production;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -6,7 +6,7 @@ package Production;
  */
 
 
-import Production.BatchRegistration;
+import gui.Production.BatchRegistration;
 import gui.*;
 import java.awt.BorderLayout;
 import java.awt.Color;

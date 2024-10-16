@@ -4,6 +4,7 @@
  */
 package gui;
 
+import gui.Production.ProductionDepartment;
 import gui.HRDeapartment.HRDepartment;
 import com.formdev.flatlaf.IntelliJTheme;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
@@ -291,6 +292,11 @@ public class home extends javax.swing.JFrame {
         jLabel5.setText("PRODUCTION");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setIconTextGap(20);
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
@@ -612,6 +618,15 @@ public class home extends javax.swing.JFrame {
     private void jMenuItem1ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem1ComponentRemoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        
+        jPanel7.removeAll();
+        ProductionDepartment hr = new ProductionDepartment();
+        jPanel7.add(hr);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
+        
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
         IntelliJTheme.setup(home.class.getResourceAsStream("/themes/Atom One Dark.theme.json"));
