@@ -577,10 +577,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-    jPanel7.removeAll();
-        inventory_dash dash = new inventory_dash();
-        jPanel7.add(dash);
-        SwingUtilities.updateComponentTreeUI(jPanel7);
+
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
