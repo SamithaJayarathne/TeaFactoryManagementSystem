@@ -5,6 +5,7 @@
 package gui.SalesDepartment;
 
 import gui.home;
+import java.awt.TextField;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Vector;
@@ -17,6 +18,14 @@ import javax.swing.table.DefaultTableModel;
 import model.MySQL;
 import model.OrderItem;
 import java.sql.ResultSet;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +36,7 @@ public class OrderManagement extends javax.swing.JPanel {
 
     Product product;
 
+    HashMap<String,Object> productdetails_Map = new HashMap<>();
     private void Product(Product product) {
         this.product = product;
     }
@@ -49,6 +59,10 @@ public class OrderManagement extends javax.swing.JPanel {
 
     String id2 = id;
 
+
+   
+
+    
     private void design() {
 
         jTextField1.putClientProperty("JComponent.roundRect", true);
@@ -77,12 +91,13 @@ public class OrderManagement extends javax.swing.JPanel {
         jFormattedTextField4.setEnabled(false);
         jFormattedTextField3.setEditable(false);
     }
-double total;
+    double total;
+
     private void loadTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
-         total = 0;
+        total = 0;
 
         for (OrderItem orderItem : order_Map.values()) {
             Vector vector = new Vector();
@@ -96,19 +111,31 @@ double total;
             total += itemTotal;
             vector.add(String.valueOf(itemTotal));
             model.addRow(vector);
+        
+            System.out.println(orderItem.getProductName());
         }
         jFormattedTextField3.setText(String.valueOf(total));
-    }
+       
+                }
 
     
     public JTextField getProductName() {
         return jTextField2;
-        
+
     }
+
     public JFormattedTextField getTotal() {
         return jFormattedTextField3;
-        
+
     }
+
+   public Double getTot(){
+    String total2 = jFormattedTextField3.getText();
+    Double tot = Double.parseDouble(total2);
+    return tot;
+   
+   }
+            
     public JTextField getProductId() {
         return jTextField4;
     }
@@ -124,6 +151,7 @@ double total;
     public JFormattedTextField getUnitPrice() {
         return jFormattedTextField4;
     }
+
     public JFormattedTextField getWantqty() {
         return jFormattedTextField2;
     }
@@ -132,9 +160,6 @@ double total;
         return jFormattedTextField1;
     }
 
-    
-  
-    
     public JTextField getOrderId() {
         return jTextField5;
     }
@@ -180,30 +205,36 @@ double total;
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 102), 1, true));
 
-        jLabel3.setText("Customer NIC");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel3.setText("CUSTOMER NIC");
 
-        jButton4.setText("Select Customer");
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setText("SELECT CUSTOMER");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Product Name");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel1.setText("PRODUCT NAME");
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jLabel6.setText("Product Categary");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel6.setText("PRODUCT CATEGORY");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 1, true));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Total");
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel9.setText("TOTAL");
 
+        jButton3.setBackground(new java.awt.Color(251, 97, 7));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Place Order");
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("PLACE ORDER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -234,7 +265,7 @@ double total;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel9)
@@ -258,14 +289,16 @@ double total;
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jLabel7.setText("Unit Price");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel7.setText("UNIT PRICE");
 
         jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("Quantity");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel8.setText("QUANTITY");
 
-        jButton7.setText("Add Order");
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton7.setText("ADD ORDER");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -276,67 +309,63 @@ double total;
 
         jLabel4.setText("ID");
 
-        jButton5.setText("Select Product");
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton5.setText("SELECT PRODUCT");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Order ID:");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel2.setText("ORDER ID");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField5)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jFormattedTextField4)))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(29, 29, 29)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(50, 50, 50)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField5)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextField4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +397,9 @@ double total;
                             .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addGap(16, 16, 16))
         );
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -392,16 +421,16 @@ double total;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(282, 282, 282)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(0, 174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,10 +445,6 @@ double total;
                 .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         home home = new home();
@@ -440,10 +465,9 @@ double total;
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-        
         String orderId = jTextField5.getText();
         String productName = jTextField2.getText();
-        String qty =jFormattedTextField2.getText();
+        String qty = jFormattedTextField2.getText();
         String AvailableQty = jFormattedTextField1.getText();
         if (orderId.isEmpty()) {
             JOptionPane.showMessageDialog(this, "OrderId and Customer NIC is Empty", "Error", JOptionPane.ERROR_MESSAGE);
@@ -453,55 +477,181 @@ double total;
         } else if (productName.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please Select Product", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (qty.isEmpty()) {
-       JOptionPane.showMessageDialog(this, "Please Enter Quantity", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (Double.parseDouble(qty) >Double.parseDouble(AvailableQty) ) {
-         JOptionPane.showMessageDialog(this, "Enter Valid Quantity", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please Enter Quantity", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (Double.parseDouble(qty) > Double.parseDouble(AvailableQty)) {
+            JOptionPane.showMessageDialog(this, "Enter Valid Quantity", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-         OrderItem orderItem = new OrderItem();
-        orderItem.setOrderId(jTextField5.getText());
-        orderItem.setCustomerNic(jTextField1.getText());
-        orderItem.setQty(Double.parseDouble(jFormattedTextField2.getText()));
-        orderItem.setCustomerNic(jTextField1.getText());
-        orderItem.setCustomerNic(jTextField1.getText());
-        orderItem.setproductId(jTextField4.getText());
-        orderItem.setProductName(jTextField2.getText());
-        orderItem.setProductCategory(jTextField3.getText());
-        orderItem.setUnitPrice(Double.parseDouble(jFormattedTextField4.getText()));
-        if (order_Map.get(jTextField4.getText()) == null) {
-            order_Map.put(jTextField4.getText(), orderItem);
-            loadTable();
-        } else {
-            OrderItem find = order_Map.get(jTextField4.getText());
-
-            if (find.getUnitPrice() == Double.parseDouble(jFormattedTextField4.getText())) {
-                find.setQty(find.getQty() + Double.parseDouble(jFormattedTextField2.getText()));
-                if (orderItem.getQty()>Double.parseDouble(AvailableQty)) {
-                    JOptionPane.showMessageDialog(this, "Enter Valid Quantity", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrderId(jTextField5.getText());
+            orderItem.setCustomerNic(jTextField1.getText());
+            orderItem.setQty(Double.parseDouble(jFormattedTextField2.getText()));
+            orderItem.setCustomerNic(jTextField1.getText());
+            orderItem.setCustomerNic(jTextField1.getText());
+            orderItem.setproductId(jTextField4.getText());
+            orderItem.setProductName(jTextField2.getText());
+            orderItem.setProductCategory(jTextField3.getText());
+            orderItem.setUnitPrice(Double.parseDouble(jFormattedTextField4.getText()));
+            if (order_Map.get(jTextField4.getText()) == null) {
+                order_Map.put(jTextField4.getText(), orderItem);
                 loadTable();
-                
             } else {
-                JOptionPane.showMessageDialog(this, "Order Item Already Exist", "Error", JOptionPane.ERROR_MESSAGE);
+                OrderItem find = order_Map.get(jTextField4.getText());
+
+                if (find.getUnitPrice() == Double.parseDouble(jFormattedTextField4.getText())) {
+                    find.setQty(find.getQty() + Double.parseDouble(jFormattedTextField2.getText()));
+                    if (orderItem.getQty() > Double.parseDouble(AvailableQty)) {
+                        JOptionPane.showMessageDialog(this, "Enter Valid Quantity", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    loadTable();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Order Item Already Exist", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
-        }
-      
 
 
     }//GEN-LAST:event_jButton7ActionPerformed
+   
+    public  void laodOrderItem(){
+        System.out.println("ok");
+     String productId = jTextField4.getText();
+     String OrderId = jTextField5.getText();
+     
+        for (OrderItem orderItem : order_Map.values()) {
+            try {
+                System.out.println("1");
+               Double total = orderItem.getQty()* orderItem.getUnitPrice();
+//               ResultSet rs =MySQL.executeSearch("SELECT * FROM `order` WHERE `orderId` = '"+OrderId+"'");
+//                if (rs.next()) {
+//                System.out.println("2");
+                    
+               MySQL.executeIUD("INSERT INTO `order_item`(`qty`,`unit_price`,`total`,`order_orderId`,`product_stock_id`)"
+                       + "VALUES('"+orderItem.getQty()+"','"+orderItem.getUnitPrice()+"','"+total+"','"+OrderId+"','"+orderItem.getproductId()+"')");
+                System.out.println("3");
+            
+//                }
+               
+            } catch (Exception ex) {
+                Logger.getLogger(OrderManagement.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-     String total = jFormattedTextField3.getText();
+
+
+       
+
+        String orderId = jTextField5.getText();
+
+        String total = jFormattedTextField3.getText();
         if (total.isEmpty()) {
-           JOptionPane.showMessageDialog(this, "Please Add to Order", "Error", JOptionPane.ERROR_MESSAGE);  
-        }else{
-   
-     home home = new home();
-        OrderManagement order = new OrderManagement();
-        AdvacePayment payment = new AdvacePayment(home, true,this);
-        payment.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Please Add to Order", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+//         System.out.println(percentageAdvance);
+            
         }
+        //email Sending
+        String customerNic = jTextField1.getText();
+        Double finalTotal = Double.parseDouble(total);
+        Double percentageAdvance = (finalTotal / 100) * 30;
+        String percentageAdvance2 = "RS" + " " + percentageAdvance;
+        try {
+            ResultSet rs = MySQL.executeSearch("SELECT * FROM `customer` WHERE `nic` = '" + customerNic + "'");
+ 
+                if (rs.next()) {
+                
+                String emailcheck = rs.getString("email");
+                    if(emailcheck != null){
+                        System.out.println(" have email");
+                    if (!emailcheck.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+
+                        JOptionPane.showMessageDialog(this, "Invalid Email Address", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                    String to2 = "kavindarashmika508@gmail.com";
+                    String host = "smtp.gmail.com";
+                    final String username = to2;
+                    final String password = "qplg semu alwa ouae"; // Use an App Password if you're using Gmail
+
+                    Properties properties = new Properties();
+                    properties.put("mail.smtp.auth", "true");
+                    properties.put("mail.smtp.starttls.enable", "true");
+                    properties.put("mail.smtp.host", host);
+                    properties.put("mail.smtp.port", "587");
+
+                    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(username, password);
+                        }
+                    });
+
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(username));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailcheck));
+
+                    String htmlContent = "</head>\n"
+                            + "<body style=\"font-family: Arial, sans-serif; margin: 0; padding: 0;\">\n"
+                            + "    <div style=\"width: 80%; margin: 40px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\n"
+                            + "        <div style=\"background-color: #4a90e2; color: #ffffff; padding: 20px; border-radius: 10px 10px 0 0;\">\n"
+                            + "            <h1 style=\"margin: 0; font-size: 2em;\">ROSLIN HILLS TEA FACTORY</h1>\n"
+                            + "            <p style=\"margin: 5px 0;\">Contact No: 011 3457654</p>\n"
+                            + "            <p style=\"margin: 5px 0;\">Address: No 4, Main Street, Kandy Road, Pilimathalawa</p>\n"
+                            + "        </div>\n"
+                            + "        <div style=\"margin-top: 20px;\">\n"
+                            + "            <h2 style=\"color: #4a90e2;\">Advance Payment</h2>\n"
+                            + "            <form>\n"
+                            + "                <div style=\"margin-bottom: 20px;\">\n"
+                            + "                    <label for=\"orderId\" style=\"display: block; margin-bottom: 10px; font-weight: bold;\">Order ID:</label>\n"
+                            + "                    <p id=\"orderId\" style=\"margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;\">" + orderId + "</p>\n"
+                            + "                </div>\n"
+                            + "                <div style=\"margin-bottom: 20px;\">\n"
+                            + "                    <label for=\"bankDetails\" style=\"display: block; margin-bottom: 10px; font-weight: bold;\">Bank Details:</label>\n"
+                            + "                    <p id=\"bankDetails\" style=\"margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;\">Bank Name: Sampath Bank,<br> <br> Account No: 78657997658, <br> <br> Account Name: Roslin Hills teaFactory(PVT) Limited,Sampath Bank</p>\n"
+                            + "                </div>\n"
+                            + "                <div style=\"margin-bottom: 20px;\">\n"
+                            + "                    <label for=\"advancePayment\" style=\"display: block; margin-bottom: 10px; font-weight: bold;\">Advance Payment:</label>\n"
+                            + "                    <p id=\"advancePayment\" style=\"margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;\">" + percentageAdvance2 + "</p>\n"
+                            + "                </div>\n"
+                            + "            </form>\n"
+                            + "        </div>\n"
+                            + "    </div>\n"
+                            + "</body>";
+
+                    message.setContent(htmlContent, "text/html");
+                    Transport.send(message);
+
+                    System.out.println("Email sent successfully!");
+
+               
+                    }
+                    }else {
+                    System.out.println("NOT HAVE EMAIL");
+                    
+
+                
+            }
+
+          
+
+            
+        } catch (Exception ex) {
+            Logger.getLogger(OrderManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+        home home = new home();
+        
+            OrderManagement order = new OrderManagement();
+            AdvacePayment payment = new AdvacePayment(home, true, this);
+            payment.setVisible(true);
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

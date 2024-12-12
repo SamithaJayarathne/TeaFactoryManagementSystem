@@ -93,12 +93,13 @@ public class SalesDepartment extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(95, 189, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(1250, 30));
         jPanel3.setLayout(new java.awt.GridLayout(1, 7));
 
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton2.setText("Dashboard");
+        jToggleButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton2.setText("DASHBOARD");
         jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton2MouseEntered(evt);
@@ -115,7 +116,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton2);
 
         jToggleButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton3.setText("Customer Management");
+        jToggleButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton3.setText("CUSTOMER MANAGEMENT");
         jToggleButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton3MouseEntered(evt);
@@ -132,7 +134,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton3);
 
         jToggleButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton4.setText("Order Management");
+        jToggleButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton4.setText("ORDER MANAGEMENT");
         jToggleButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton4MouseEntered(evt);
@@ -149,7 +152,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton4);
 
         jToggleButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton5.setText("Return Order");
+        jToggleButton5.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton5.setText("RETURN ORDER");
         jToggleButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton5MouseEntered(evt);
@@ -166,7 +170,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton5);
 
         jToggleButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton6.setText("Customer Feedback");
+        jToggleButton6.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton6.setText("CUSTOMER FEEDBACK");
         jToggleButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton6MouseEntered(evt);
@@ -183,7 +188,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton6);
 
         jToggleButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton7.setText("Sales");
+        jToggleButton7.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton7.setText("SALES");
         jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton7MouseEntered(evt);
@@ -200,7 +206,8 @@ public class SalesDepartment extends javax.swing.JPanel {
         jPanel3.add(jToggleButton7);
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton1.setText("Analysis");
+        jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton1.setText("ANALYSIS");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jToggleButton1MouseEntered(evt);
@@ -249,7 +256,7 @@ public class SalesDepartment extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,8 +266,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseEntered
         jLabel8.setOpaque(true);
-        jLabel8.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel8.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel8.setBorder(border);
     }//GEN-LAST:event_jToggleButton2MouseEntered
 
@@ -275,8 +282,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseEntered
         jLabel9.setOpaque(true);
-        jLabel9.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel9.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel9.setBorder(border);
     }//GEN-LAST:event_jToggleButton3MouseEntered
 
@@ -291,8 +298,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton4MouseEntered
         jLabel10.setOpaque(true);
-        jLabel10.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel10.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel10.setBorder(border);
     }//GEN-LAST:event_jToggleButton4MouseEntered
 
@@ -307,8 +314,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton5MouseEntered
         jLabel11.setOpaque(true);
-        jLabel11.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel11.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel11.setBorder(border);
     }//GEN-LAST:event_jToggleButton5MouseEntered
 
@@ -323,8 +330,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseEntered
         jLabel12.setOpaque(true);
-        jLabel12.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel12.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel12.setBorder(border);
     }//GEN-LAST:event_jToggleButton6MouseEntered
 
@@ -339,8 +346,8 @@ public class SalesDepartment extends javax.swing.JPanel {
 
     private void jToggleButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseEntered
         jLabel13.setOpaque(true);
-        jLabel13.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel13.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel13.setBorder(border);
     }//GEN-LAST:event_jToggleButton7MouseEntered
 
@@ -522,7 +529,7 @@ public class SalesDepartment extends javax.swing.JPanel {
     private void jToggleButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseEntered
        jLabel14.setOpaque(true);
         jLabel14.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel14.setBorder(border);
     }//GEN-LAST:event_jToggleButton1MouseEntered
 
