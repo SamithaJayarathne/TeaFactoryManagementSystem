@@ -5,12 +5,15 @@
 package gui;
 
 import gui.HRDeapartment.HRDepartment;
+
 import com.formdev.flatlaf.IntelliJTheme;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import gui.HRDeapartment.Attendance;
 import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
+import gui.Production.ProductionDepartment;
+import gui.SalesDepartment.SalesDepartment;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -291,6 +294,11 @@ public class home extends javax.swing.JFrame {
         jLabel5.setText("PRODUCTION");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setIconTextGap(20);
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
@@ -568,7 +576,10 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        System.out.println("ok");
+        jPanel7.removeAll();
+        SalesDepartment sales = new SalesDepartment();
+        jPanel7.add(sales);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -612,6 +623,13 @@ public class home extends javax.swing.JFrame {
     private void jMenuItem1ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem1ComponentRemoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        jPanel7.removeAll();
+        ProductionDepartment production = new ProductionDepartment();
+        jPanel7.add(production);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
         IntelliJTheme.setup(home.class.getResourceAsStream("/themes/Atom One Dark.theme.json"));
