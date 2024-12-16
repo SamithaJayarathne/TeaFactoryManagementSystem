@@ -221,7 +221,7 @@ public class home extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setBackground(new java.awt.Color(45, 50, 80));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 519));
 
@@ -632,7 +632,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
-        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/Atom One Dark.theme.json"));
+        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/GitHub.theme.json"));
 //        FlatMacLightLaf.setup();
 //        FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {

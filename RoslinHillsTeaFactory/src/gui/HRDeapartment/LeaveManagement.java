@@ -447,6 +447,7 @@ public class LeaveManagement extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Applied Successfully", "", JOptionPane.INFORMATION_MESSAGE);
                 reset();
+                loadPendingLeaves();
 
             } catch (Exception ex) {
                 Logger.getLogger(LeaveManagement.class.getName()).log(Level.SEVERE, null, ex);
