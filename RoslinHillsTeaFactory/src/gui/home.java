@@ -625,14 +625,14 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-<<<<<<< HEAD
+
         jPanel7.removeAll();
         ProductionDepartment production = new ProductionDepartment();
         jPanel7.add(production);
         SwingUtilities.updateComponentTreeUI(jPanel7);
-=======
+
         // TODO add your handling code here:
->>>>>>> 79488fffd5f3a723eefb067b6ba7e512099e7d8e
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
