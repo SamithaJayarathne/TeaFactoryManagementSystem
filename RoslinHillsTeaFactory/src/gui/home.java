@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package gui;
 
 import gui.HRDeapartment.HRDepartment;
@@ -12,7 +9,10 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import gui.HRDeapartment.Attendance;
 import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
+<<<<<<< HEAD
+=======
 import gui.Production.ProductionDepartment;
+>>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
 import gui.SalesDepartment.SalesDepartment;
 
 import java.awt.BorderLayout;
@@ -577,8 +577,14 @@ public class home extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         jPanel7.removeAll();
+<<<<<<< HEAD
+
+        SalesDepartment order = new SalesDepartment();
+        jPanel7.add(order);
+=======
         SalesDepartment sales = new SalesDepartment();
         jPanel7.add(sales);
+>>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
         SwingUtilities.updateComponentTreeUI(jPanel7);
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -617,7 +623,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem1ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem1ComponentRemoved

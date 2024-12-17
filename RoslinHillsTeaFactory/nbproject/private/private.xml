@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/SalesDepartment/SalesDepartment.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/home.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/SalesDepartment/OrderManagement.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/SalesDepartment/Order.java</file>
+=======
             <file>file:/C:/Users/sudan/OneDrive/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/HRDeapartment/HRDepartment.java</file>
             <file>file:/C:/Users/sudan/OneDrive/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/HRDeapartment/LoanAndAdvance.java</file>
             <file>file:/C:/Users/sudan/OneDrive/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/home.java</file>
             <file>file:/C:/Users/sudan/OneDrive/Documents/NetBeansProjects/TeaFactoryManagementSystem/TeaFactoryManagementSystem/RoslinHillsTeaFactory/src/gui/HRDeapartment/LeaveManagement.java</file>
+>>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
         </group>
     </open-files>
 </project-private>

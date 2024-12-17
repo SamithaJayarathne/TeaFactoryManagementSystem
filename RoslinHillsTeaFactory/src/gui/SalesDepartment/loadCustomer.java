@@ -369,10 +369,17 @@ public class loadCustomer extends javax.swing.JDialog {
         }else{
             System.out.println("CM2 is Null");
         }
+        
+       String email = String.valueOf(jTable1.getValueAt(row, 3));
+       
+       
+       
         }
      
     }//GEN-LAST:event_jTable1MouseClicked
 
+    
+    
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         loadCustomer2("fname", "ASC");
     }//GEN-LAST:event_jTextField2KeyReleased

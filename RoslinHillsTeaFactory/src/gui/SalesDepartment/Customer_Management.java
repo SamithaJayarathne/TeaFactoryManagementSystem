@@ -174,8 +174,9 @@ public class Customer_Management extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1250, 585));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 102)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Last Name");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +185,7 @@ public class Customer_Management extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("First Name");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +194,7 @@ public class Customer_Management extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Address Line1");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -202,10 +203,10 @@ public class Customer_Management extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nic");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Address Line 2");
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -214,13 +215,13 @@ public class Customer_Management extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("City");
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Gender");
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Customer Status");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -232,7 +233,7 @@ public class Customer_Management extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Mobile");
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +267,7 @@ public class Customer_Management extends javax.swing.JPanel {
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Customer Details");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -277,7 +278,7 @@ public class Customer_Management extends javax.swing.JPanel {
         });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Address Details");
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -412,9 +413,9 @@ public class Customer_Management extends javax.swing.JPanel {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(200, 200, 200))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

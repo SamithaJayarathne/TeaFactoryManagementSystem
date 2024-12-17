@@ -15,6 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.MySQL;
+import model.OrderItem;
+import gui.SalesDepartment.OrderManagement;
 
 public class AdvacePayment extends javax.swing.JDialog {
 
@@ -22,16 +24,27 @@ public class AdvacePayment extends javax.swing.JDialog {
     HashMap<String, Integer> paymentStatus_Map = new HashMap<>();
     HashMap<String, Integer> paymentMethod_Map = new HashMap<>();
 
+    private static OrderManagement AP2;
     private static OrderManagement AP;
-    public AdvacePayment(java.awt.Frame parent, boolean modal,JPanel jpanel) {
+
+    public AdvacePayment(java.awt.Frame parent, boolean modal, JPanel jpanel) {
+
         super(parent, modal);
         initComponents();
         loadorder_status();
         loadPaymentMethod();
         loadPaymentStatus();
         design();
-        
-        this.AP = (OrderManagement)jpanel;
+
+        if (jpanel instanceof OrderManagement) {
+
+            this.AP = (OrderManagement) jpanel;
+        }
+
+        if (jpanel instanceof OrderManagement) {
+            this.AP2 = (OrderManagement) jpanel;
+        }
+
     }
 
     private void design() {
@@ -203,7 +216,6 @@ public class AdvacePayment extends javax.swing.JDialog {
                         .addComponent(jLabel5)
                         .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -226,6 +238,11 @@ public class AdvacePayment extends javax.swing.JDialog {
         );
 
         jButton2.setText("Pending Order");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Reset All");
 
@@ -273,20 +290,22 @@ public class AdvacePayment extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         String orderId = AP.getOrderId().getText();
-        System.out.println(orderId);
-        String total = AP.getTotal().getText();
+
+//        Double tot = AP.getTot();
         String nic = AP.getCustomerNic().getText();
+        System.out.println(nic);
         String qty = AP.getqty().getText();
         String unit_price = AP.getUnitPrice().getText();
-        Double unit_total = Double.parseDouble(qty)*Double.parseDouble(unit_price);
+
         String stock_id = AP.getID().getText();
-        String unit_total2 = String.valueOf(unit_total);
+        String total = AP.getTotal().getText();
         String advancePayment = jFormattedTextField1.getText();
         String PaymentStatus = String.valueOf(jComboBox2.getSelectedItem());
         String OrderStatus = String.valueOf(jComboBox1.getSelectedItem());
         String PaymentMethod = String.valueOf(jComboBox3.getSelectedItem());
-       
+
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         if (advancePayment.isEmpty()) {
@@ -299,24 +318,44 @@ public class AdvacePayment extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Please Select Order Status", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                
+                System.out.println("ok");
                 MySQL.executeIUD("INSERT INTO `order`(`orderId`,`order_date`,`total_amount`,`customer_nic`,`order_status_id`,`payment_status_id`,`payment_method_id`)"
-                        + "VALUES('"+orderId+"','"+sdf.format(date)+"','"+total+"','"+nic+"','"+orderStatus_Map.get(OrderStatus)+"','"+paymentStatus_Map.get(PaymentStatus)+"','"+paymentMethod_Map.get(PaymentMethod)+"')");
+                        + "VALUES('" + orderId + "','" + sdf.format(date) + "','" + total + "','" + nic + "','" + orderStatus_Map.get(OrderStatus) + "','" + paymentStatus_Map.get(PaymentStatus) + "','" + paymentMethod_Map.get(PaymentMethod) + "')");
                 JOptionPane.showMessageDialog(this, "Successful Addded", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+                AP2.laodOrderItem();
 
                 MySQL.executeIUD("INSERT INTO `advace`(`payment`,`date`,`payment_status_id`,`payment_method_id`,`order_orderId`)"
-                        + "VALUES('"+advancePayment+"','"+sdf.format(date)+"','"+paymentStatus_Map.get(PaymentStatus)+"','"+paymentMethod_Map.get(PaymentMethod)+"','"+orderId+"')");
-                
-                
-                
-                
-                MySQL.executeIUD("INSERT INTO `order_item`(`qty`,`unit_price`,`total`,`order_orderId`,`product_stock_id`)"
-                        + "VALUES('"+qty+"','"+unit_price+"','"+unit_total2+"','"+orderId+"','"+stock_id+"')");
+                        + "VALUES('" + advancePayment + "','" + sdf.format(date) + "','" + paymentStatus_Map.get(PaymentStatus) + "','" + paymentMethod_Map.get(PaymentMethod) + "','" + orderId + "')");
+
             } catch (Exception ex) {
                 Logger.getLogger(AdvacePayment.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String orderId = AP.getOrderId().getText();
+
+        try {
+            ResultSet Rs = MySQL.executeSearch("SELECT * FROM `pending_order` WHERE `order_id` = '"+orderId+"'");
+//            ResultSet Rs2 = MySQL.executeSearch("SELECT * FROM `pending_order` INNER JOIN `pending_status`.`id` = `pending_order`.`pending_status_id`");
+            
+            if (Rs.next()) {
+                JOptionPane.showMessageDialog(this,"Order Already Added","Warning",JOptionPane.WARNING_MESSAGE);
+            
+           }else{
+           
+                MySQL.executeIUD("INSERT INTO `pending_order`(`order_id`,`pending_status_id`)"
+                    + "VALUES('"+orderId+"','2')");
+                JOptionPane.showMessageDialog(this,"Pending Order Added","Warning",JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
