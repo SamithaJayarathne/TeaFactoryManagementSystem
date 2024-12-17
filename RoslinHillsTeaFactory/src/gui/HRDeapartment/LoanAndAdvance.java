@@ -4,6 +4,8 @@
  */
 package gui.HRDeapartment;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author sudan
@@ -30,15 +32,20 @@ public class LoanAndAdvance extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1298, 50));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jToggleButton1.setText("Advance Payments");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jToggleButton1);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -47,8 +54,8 @@ public class LoanAndAdvance extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setLayout(new java.awt.CardLayout());
-        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
+        jPanel4.setLayout(new java.awt.CardLayout());
+        jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,16 +65,23 @@ public class LoanAndAdvance extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        AdvancePayments ad = new AdvancePayments();
+        jPanel4.removeAll();
+        jPanel4.add(ad);
+        SwingUtilities.updateComponentTreeUI(jPanel4);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

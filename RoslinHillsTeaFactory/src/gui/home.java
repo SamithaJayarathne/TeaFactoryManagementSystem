@@ -2,12 +2,17 @@
 package gui;
 
 import gui.HRDeapartment.HRDepartment;
+
 import com.formdev.flatlaf.IntelliJTheme;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import gui.HRDeapartment.Attendance;
 import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
+<<<<<<< HEAD
+=======
+import gui.Production.ProductionDepartment;
+>>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
 import gui.SalesDepartment.SalesDepartment;
 
 import java.awt.BorderLayout;
@@ -216,7 +221,7 @@ public class home extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setBackground(new java.awt.Color(45, 50, 80));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 519));
 
@@ -572,9 +577,14 @@ public class home extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         jPanel7.removeAll();
+<<<<<<< HEAD
 
         SalesDepartment order = new SalesDepartment();
         jPanel7.add(order);
+=======
+        SalesDepartment sales = new SalesDepartment();
+        jPanel7.add(sales);
+>>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
         SwingUtilities.updateComponentTreeUI(jPanel7);
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -621,11 +631,18 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+
+        jPanel7.removeAll();
+        ProductionDepartment production = new ProductionDepartment();
+        jPanel7.add(production);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
+
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
-        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/Atom One Dark.theme.json"));
+        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/GitHub.theme.json"));
 //        FlatMacLightLaf.setup();
 //        FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
