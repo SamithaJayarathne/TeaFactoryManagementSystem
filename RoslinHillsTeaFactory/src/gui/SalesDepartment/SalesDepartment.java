@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
@@ -47,6 +48,11 @@ public class SalesDepartment extends javax.swing.JPanel {
     public JLabel getJlabel2() {
 
         return jLabel9;
+
+    }
+    public JPanel getjPanel10() {
+
+        return jPanel10;
 
     }
 
@@ -432,7 +438,7 @@ public class SalesDepartment extends javax.swing.JPanel {
         jToggleButton6.setSelected(false);
         jToggleButton7.setSelected(false);
         
-        OrderManagement order = new OrderManagement();
+        Order order = new Order();
          jPanel10.removeAll();
         jPanel10.add(order);
         SwingUtilities.updateComponentTreeUI(jPanel10);
