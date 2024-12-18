@@ -1,17 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package gui;
 
 import gui.Production.ProductionDepartment;
 import gui.HRDeapartment.HRDepartment;
+
 import com.formdev.flatlaf.IntelliJTheme;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import gui.HRDeapartment.Attendance;
 import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
+<<<<<<< HEAD
+=======
+
+import gui.Production.ProductionDepartment;
+
+import gui.SalesDepartment.SalesDepartment;
+
+>>>>>>> main
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -218,7 +224,7 @@ public class home extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setBackground(new java.awt.Color(45, 50, 80));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 519));
 
@@ -573,7 +579,16 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        System.out.println("ok");
+        jPanel7.removeAll();
+
+
+        SalesDepartment order = new SalesDepartment();
+        jPanel7.add(order);
+
+        SalesDepartment sales = new SalesDepartment();
+        jPanel7.add(sales);
+
+        SwingUtilities.updateComponentTreeUI(jPanel7);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -611,7 +626,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem1ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem1ComponentRemoved
@@ -619,16 +634,27 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+<<<<<<< HEAD
         
         jPanel7.removeAll();
         ProductionDepartment pr = new ProductionDepartment();
         jPanel7.add(pr);
         SwingUtilities.updateComponentTreeUI(jPanel7);
         
+=======
+
+        jPanel7.removeAll();
+        ProductionDepartment production = new ProductionDepartment();
+        jPanel7.add(production);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
+
+        // TODO add your handling code here:
+
+>>>>>>> main
     }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
-        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/Atom One Dark.theme.json"));
+        IntelliJTheme.setup(home.class.getResourceAsStream("/themes/GitHub.theme.json"));
 //        FlatMacLightLaf.setup();
 //        FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {

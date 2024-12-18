@@ -24,9 +24,15 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="timePicker1" min="-2" pref="238" max="-2" attributes="0"/>
               <EmptySpace pref="115" max="32767" attributes="0"/>
+=======
+              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <Component id="timePicker1" min="-2" pref="238" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+>>>>>>> main
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -42,6 +48,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="32" max="32767" attributes="0"/>
               <Component id="timePicker1" min="-2" max="-2" attributes="0"/>
@@ -53,11 +60,28 @@
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+=======
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                      <Component id="jTextField1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="timePicker1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+>>>>>>> main
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< HEAD
     <Component class="com.raven.swing.TimePicker" name="timePicker1">
       <Properties>
         <Property name="displayText" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -65,6 +89,8 @@
         </Property>
       </Properties>
     </Component>
+=======
+>>>>>>> main
     <Component class="javax.swing.JTextField" name="jTextField1">
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -75,5 +101,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
+<<<<<<< HEAD
+=======
+    <Component class="com.raven.swing.TimePicker" name="timePicker1">
+      <Properties>
+        <Property name="displayText" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="jTextField1"/>
+        </Property>
+      </Properties>
+    </Component>
+>>>>>>> main
   </SubComponents>
 </Form>
