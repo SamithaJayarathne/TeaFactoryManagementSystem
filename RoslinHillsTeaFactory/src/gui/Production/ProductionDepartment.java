@@ -4,6 +4,7 @@
  */
 package gui.Production;
 
+import Production.MachineManagement;
 import gui.Production.BatchRegistration;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -235,8 +236,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseEntered
         jLabel8.setOpaque(true);
-        jLabel8.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel8.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel8.setBorder(border);
     }//GEN-LAST:event_jToggleButton2MouseEntered
 
@@ -251,8 +252,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseEntered
         jLabel9.setOpaque(true);
-        jLabel9.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel9.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel9.setBorder(border);
     }//GEN-LAST:event_jToggleButton3MouseEntered
 
@@ -267,8 +268,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton4MouseEntered
         jLabel10.setOpaque(true);
-        jLabel10.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel10.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel10.setBorder(border);
     }//GEN-LAST:event_jToggleButton4MouseEntered
 
@@ -283,8 +284,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton5MouseEntered
         jLabel11.setOpaque(true);
-        jLabel11.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel11.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel11.setBorder(border);
     }//GEN-LAST:event_jToggleButton5MouseEntered
 
@@ -299,8 +300,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseEntered
         jLabel12.setOpaque(true);
-        jLabel12.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel12.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel12.setBorder(border);
     }//GEN-LAST:event_jToggleButton6MouseEntered
 
@@ -315,8 +316,8 @@ public class ProductionDepartment extends javax.swing.JPanel {
 
     private void jToggleButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseEntered
         jLabel13.setOpaque(true);
-        jLabel13.setBackground(new Color(0, 204, 51));
-        Border border = BorderFactory.createLineBorder(new Color(225, 252, 204), 1);
+        jLabel13.setBackground(new Color(0, 102, 255));
+        Border border = BorderFactory.createLineBorder(new Color(0, 102, 255), 1);
         jLabel13.setBorder(border);
     }//GEN-LAST:event_jToggleButton7MouseEntered
 
@@ -397,9 +398,20 @@ public class ProductionDepartment extends javax.swing.JPanel {
         jToggleButton5.setSelected(false);
         jToggleButton6.setSelected(false);
         jToggleButton7.setSelected(false);
+        
+        BatchTracking batchTrk = new BatchTracking();
+        jPanel10.removeAll();
+        jPanel10.add(batchTrk);
+        SwingUtilities.updateComponentTreeUI(jPanel10);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+       
+        MachineManagement mm = new MachineManagement();
+        jPanel10.removeAll();
+        jPanel10.add(mm);
+        SwingUtilities.updateComponentTreeUI(jPanel10);
+        
         jLabel9.setOpaque(false);
         jLabel9.setBorder(null);
         jLabel10.setOpaque(false);
@@ -421,7 +433,13 @@ public class ProductionDepartment extends javax.swing.JPanel {
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-       jLabel9.setOpaque(false);
+
+        ShiftManagement sm = new ShiftManagement();
+        jPanel10.removeAll();
+        jPanel10.add(sm);
+        SwingUtilities.updateComponentTreeUI(jPanel10);
+        
+        jLabel9.setOpaque(false);
         jLabel9.setBorder(null);
         jLabel10.setOpaque(false);
         jLabel10.setBorder(null);

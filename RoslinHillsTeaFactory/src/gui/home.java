@@ -12,7 +12,6 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import gui.HRDeapartment.Attendance;
 import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -622,8 +621,8 @@ public class home extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         
         jPanel7.removeAll();
-        ProductionDepartment hr = new ProductionDepartment();
-        jPanel7.add(hr);
+        ProductionDepartment pr = new ProductionDepartment();
+        jPanel7.add(pr);
         SwingUtilities.updateComponentTreeUI(jPanel7);
         
     }//GEN-LAST:event_jLabel5MouseClicked
