@@ -105,9 +105,8 @@ public class BatchRegistration extends javax.swing.JPanel {
         try {
 
             Vector<String> vector = new Vector<>();
-            vector.add("Not Assigned");
 
-            ResultSet resultSet = MySQL.executeSearch("SELECT * FROM `production_process`");
+            ResultSet resultSet = MySQL.executeSearch("SELECT * FROM `production_status`");
 
             while (resultSet.next()) {
                 vector.add(resultSet.getString("name"));
@@ -148,7 +147,7 @@ public class BatchRegistration extends javax.swing.JPanel {
             ResultSet rs = MySQL.executeSearch("SELECT * FROM `tea_batch`"
                     + "INNER JOIN `grades` ON `tea_batch`.`grades_id`=`grades`.`id` "
                     + "INNER JOIN `machine` ON `tea_batch`.`machine_id`=`machine`.`id` "
-                    + "INNER JOIN `production_process` ON `tea_batch`.`production_process_id`=`production_process`.`id` ");
+                    + "INNER JOIN `production_status` ON `tea_batch`.`production_status_id`=`production_status`.`id` ");
 
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             model.setRowCount(0);
@@ -160,7 +159,7 @@ public class BatchRegistration extends javax.swing.JPanel {
                 vector.add(rs.getString("qty_start"));
                 vector.add(rs.getString("grades.name"));
                 vector.add(rs.getString("machine.name"));
-                vector.add(rs.getString("production_process.name"));
+                vector.add(rs.getString("production_status.name"));
 
                 model.addRow(vector);
             }
@@ -489,8 +488,11 @@ public class BatchRegistration extends javax.swing.JPanel {
             }
 
         }
+        batchID();
         loadTeaBatch();
         loadRawMaterialStock();
+        loadCategoryChart();
+        jTextField2.setText("");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

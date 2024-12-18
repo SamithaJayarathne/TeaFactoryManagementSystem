@@ -1,6 +1,7 @@
 
 package gui;
 
+import gui.Production.ProductionDepartment;
 import gui.HRDeapartment.HRDepartment;
 
 import com.formdev.flatlaf.IntelliJTheme;
@@ -11,10 +12,12 @@ import gui.HRDeapartment.Employees;
 import gui.HRDeapartment.LeaveManagement;
 <<<<<<< HEAD
 =======
+
 import gui.Production.ProductionDepartment;
->>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
+
 import gui.SalesDepartment.SalesDepartment;
 
+>>>>>>> main
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -577,14 +580,14 @@ public class home extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         jPanel7.removeAll();
-<<<<<<< HEAD
+
 
         SalesDepartment order = new SalesDepartment();
         jPanel7.add(order);
-=======
+
         SalesDepartment sales = new SalesDepartment();
         jPanel7.add(sales);
->>>>>>> 29e1cd431e839de155931249bb75b0b04d3002d1
+
         SwingUtilities.updateComponentTreeUI(jPanel7);
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -631,6 +634,14 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ComponentRemoved
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+<<<<<<< HEAD
+        
+        jPanel7.removeAll();
+        ProductionDepartment pr = new ProductionDepartment();
+        jPanel7.add(pr);
+        SwingUtilities.updateComponentTreeUI(jPanel7);
+        
+=======
 
         jPanel7.removeAll();
         ProductionDepartment production = new ProductionDepartment();
@@ -639,6 +650,7 @@ public class home extends javax.swing.JFrame {
 
         // TODO add your handling code here:
 
+>>>>>>> main
     }//GEN-LAST:event_jLabel5MouseClicked
 
     public static void main(String args[]) {
